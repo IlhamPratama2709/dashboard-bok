@@ -448,6 +448,8 @@ main.penuh{overflow:hidden}
 .tentang{padding-block:24px 48px;display:grid;gap:20px;max-width:1100px}
 .tentang h2{font-family:var(--f-judul);font-weight:600;font-size:22px;margin:0}
 .tentang p{max-width:70ch;margin:0}
+.pembuka-t{columns:2 340px;column-gap:32px}
+.pembuka-t p{max-width:none;margin:0 0 10px}
 .gulir{overflow-x:auto}
 .tentang table{border-collapse:collapse;width:100%;min-width:760px;font-size:12px}
 .tentang th,.tentang td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--garis);vertical-align:top}
@@ -807,7 +809,7 @@ details.perjalanan>summary small{font-size:11.5px;color:var(--tinta-2)}
       </div>
     </aside>
     <div class="tengah">
-      <details class="kotak cara-baca" id="cara-baca" open><summary>Cara membaca grafik ini</summary>
+      <details class="kotak cara-baca" id="cara-baca"><summary>Cara membaca grafik ini</summary>
         <ol class="langkah">
           <li><svg viewBox="0 0 54 54" aria-hidden="true"><g style="fill:var(--titik);fill-opacity:.55"><circle cx="14" cy="38" r="3"/><circle cx="22" cy="30" r="3"/><circle cx="30" cy="34" r="3"/><circle cx="38" cy="20" r="3"/></g><circle cx="38" cy="20" r="5" style="fill:none;stroke:var(--kuning);stroke-width:2"/></svg><div><b>1. Satu titik, satu kab/kota</b><span>Arahkan tetikus ke titik untuk melihat nama dan angkanya. Klik untuk menandainya.</span></div></li>
           <li><svg viewBox="0 0 54 54" aria-hidden="true"><rect x="6" y="6" width="21" height="21" style="fill:var(--kuning);fill-opacity:.3"/><line x1="27" y1="6" x2="27" y2="48" style="stroke:var(--tinta-3);stroke-dasharray:3 2"/><line x1="6" y1="27" x2="48" y2="27" style="stroke:var(--tinta-3);stroke-dasharray:3 2"/></svg><div><b>2. Garis putus-putus membagi empat</b><span>Garis itu nilai tengah (median). Kotak kuning berisi daerah yang paling perlu diperhatikan untuk pertanyaan ini.</span></div></li>
@@ -854,9 +856,11 @@ details.perjalanan>summary small{font-size:11.5px;color:var(--tinta-2)}
   <!-- TENTANG -->
   <section id="hal-tentang" class="isi tentang" data-hal="tentang" hidden>
     <h2>Tentang data</h2>
+    <div class="pembuka-t">
     <p>Angka di dashboard ini berasal dari database Kajian BOK Kewilayahan tingkat kabupaten dan kota (514 daerah, 2021 sampai 2025), ditambah hitungan kapasitas fiskal dan rekap pembiayaan non-BOK tim. Satuan rupiah ditulis dalam ribu atau juta rupiah. Batas wilayah dari peta Badan Informasi Geospasial.</p>
     <p>Lapisan titik desa memakai titik pusat desa BPS 2020 dan jumlah penduduk menurut waktu tempuh ke Puskesmas terdekat per desa dari layanan peta Bappenas (KGM). Data waktu tempuh memakai kode desa Kemendagri, sedangkan peta memakai kode BPS, sehingga keduanya dipadankan lewat nama desa, kecamatan, dan kab/kota. Sebanyak 61.144 dari 80.976 desa terpadankan; desa yang namanya berubah atau kelurahan di kota belum tampil. Warna titik menunjukkan kelas waktu tempuh yang dihuni penduduk terbanyak di desa itu. Lambang daerah di panel Analisis diambil dari Wikimedia Commons (519 dari 552 berstatus domain publik, sisanya berlisensi CC BY atau CC BY-SA) dan diperkecil menjadi 28 piksel.</p>
     <p>Warna peta membagi kab/kota yang punya data ke dalam lima kelompok sama banyak (kuintil) untuk tahun yang dipilih. Batas kelompok ditulis di kotak "Arti warna" dan berubah setiap kali indikator atau tahun diganti, jadi warna yang sama di dua tahun belum tentu berarti angka yang sama.</p>
+    </div>
     <details class="istilah-d" id="daftar-istilah"><summary><span>Daftar istilah</span><small>Arti singkat istilah yang dipakai di dashboard ini</small></summary><dl class="daftar-ist" id="daftar-ist"></dl></details>
     <div id="data-tim-wadah" hidden><h2 style="font-size:18px;margin-top:8px">Data tim</h2><p class="petunjuk" id="data-tim-cat" style="margin:0 0 6px"></p><div class="data-tim" id="data-tim"></div></div>
     <h2 style="font-size:18px;margin-top:8px">Indikator: asal data, cara pengolahan, dan dasar hukumnya</h2>
@@ -2964,7 +2968,7 @@ const pop = $('pop'); let popId = null;
 function bukaPop(id, el){
   if(popId===id && !pop.hidden){ tutupPop(); return; }
   const i = IND[id]; popId = id;
-  pop.innerHTML = `<button type="button" class="tutup" aria-label="Tutup">&times;</button><b>${esc(i.label)}</b><p>${esc(i.awam)}</p><p style="color:var(--tinta-2)">Satuan: ${esc(i.satuan)}. Tahun: ${i.tahun.join(', ')}.</p><a href="#tentang" data-olah="${i.id}">Sumber dan cara pengolahan</a>`;
+  pop.innerHTML = `<button type="button" class="tutup" aria-label="Tutup">&times;</button><b>${esc(i.label)}</b><p>${esc(i.awam)}</p><p style="color:var(--tinta-2)">Satuan: ${esc(i.satuan)}. Tahun: ${rentangTahun(i.tahun)}.</p><a href="#tentang" data-olah="${i.id}">Sumber dan cara pengolahan</a>`;
   pop.hidden = false; const r = el.getBoundingClientRect(), w = pop.offsetWidth, h = pop.offsetHeight;
   let x = r.right + 8, y = r.top - 6; if(x + w > innerWidth - 8) x = Math.max(8, r.left - w - 8); if(y + h > innerHeight - 8) y = innerHeight - h - 8;
   pop.style.left = x+'px'; pop.style.top = y+'px';
@@ -3144,7 +3148,7 @@ $('peringkat').addEventListener('click', e => { const b = e.target.closest('.bat
 function gambarTentang(){
   const i = IND[S.ind];
   $('tentang-ind').innerHTML = `<p>${esc(i.label)}, dalam ${esc(i.satuan)}.</p>${i.catatan?`<p>${esc(i.catatan)}</p>`:''}
-    <dl><dt>Sumber</dt><dd>${esc(i.sumber)}</dd><dt>Tahun</dt><dd>${i.tahun.join(', ')}</dd><dt>Tingkat</dt><dd>Kabupaten dan kota</dd></dl>
+    <dl><dt>Sumber</dt><dd>${esc(i.sumber)}</dd><dt>Tahun</dt><dd>${rentangTahun(i.tahun)}</dd><dt>Tingkat</dt><dd>Kabupaten dan kota</dd></dl>
     <p style="margin-top:8px"><a href="#tentang" data-olah="${i.id}">Cara pengolahan dan kegunaannya</a></p>`;
 }
 $('sumber-peta').addEventListener('click', e => { const a = e.target.closest('a[data-olah]'); if(a){ e.preventDefault(); keOlah(a.dataset.olah); } });
@@ -3176,6 +3180,10 @@ function garisKecil(judul, th, nilaiArr, des, satuan){
   </svg><p class="petunjuk">${esc(satuan)}</p></figure>`;
 }
 function p(x){ return `<p>${x}</p>`; }
+/* 2021, 2022, 2023, 2024 -> "2021–2024"; tahun yang bolong dipisah koma */
+function rentangTahun(t){ const a = [...t].sort((x,y)=>x-y), o = []; let m = 0;
+  for(let j=1; j<=a.length; j++) if(j===a.length || a[j]!==a[j-1]+1){ o.push(j-1>m ? `${a[m]}–${a[j-1]}` : `${a[m]}`); m = j; }
+  return o.join(', '); }
 
 function gambarBeranda(){
   const t = 2024;
@@ -3387,9 +3395,9 @@ $('daftar-olah').innerHTML = D.indikator.map(i => { const a = ASAL.indikator[i.i
   ${baris('Variabel atau pertanyaan sumber', a.variabel_sumber ? esc(a.variabel_sumber) : '')}${baris('Cara pengolahan', a.langkah && a.langkah.length ? `<ol>${a.langkah.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>` : esc(i.olah))}
   ${baris('Pemeriksaan', a.pemeriksaan ? esc(a.pemeriksaan) : '')}${baris('Alasan dipilih', a.alasan ? esc(a.alasan) : '')}${baris('Dasar hukum dan rujukan definisi', daftarLi(a.dasar_hukum))}
   ${baris('Data tim', (TAUTAN.indikator[i.id]||[]).map(x => `<a class="data-a" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join('<br>'))}
-  ${baris('Gunanya untuk kajian', esc(i.arti))}${baris('Satuan dan tahun', `${esc(i.satuan)}, ${i.tahun.join(', ')}`)}${baris('Keterbatasan', daftarLi([...(i.catatan?[i.catatan]:[]), ...(a.keterbatasan||[])]))}</dl></div></details>`; }).join('');
+  ${baris('Gunanya untuk kajian', esc(i.arti))}${baris('Satuan dan tahun', `${esc(i.satuan)}, ${rentangTahun(i.tahun)}`)}${baris('Keterbatasan', daftarLi([...(i.catatan?[i.catatan]:[]), ...(a.keterbatasan||[])]))}</dl></div></details>`; }).join('');
 $('toc').addEventListener('click', e => { const x = e.target.closest('a[data-olah]'); if(x){ e.preventDefault(); keOlah(x.dataset.olah); } });
-$('tabel-ind').innerHTML = `<thead><tr><th>Kelompok</th><th>Indikator</th><th>Satuan</th><th>Tahun</th><th>Sumber</th><th>Catatan</th></tr></thead><tbody>${D.indikator.map(i=>`<tr><td>${esc(D.kelompok.find(g=>g.id===i.kelompok).nama)}</td><td>${esc(i.label)}</td><td>${esc(i.satuan)}</td><td>${i.tahun.join(', ')}</td><td>${esc(i.sumber)}</td><td>${esc(i.catatan)}</td></tr>`).join('')}</tbody>`;
+$('tabel-ind').innerHTML = `<thead><tr><th>Kelompok</th><th>Indikator</th><th>Satuan</th><th>Tahun</th><th>Sumber</th><th>Catatan</th></tr></thead><tbody>${D.indikator.map(i=>`<tr><td>${esc(D.kelompok.find(g=>g.id===i.kelompok).nama)}</td><td>${esc(i.label)}</td><td>${esc(i.satuan)}</td><td>${rentangTahun(i.tahun)}</td><td>${esc(i.sumber)}</td><td>${esc(i.catatan)}</td></tr>`).join('')}</tbody>`;
 
 /* ---------------- regulasi ---------------- */
 const REG = JSON.parse($('data-reg').textContent || 'null');
