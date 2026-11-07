@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dashboard BOK Kewilayahan</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<meta name="copyright" content="Hak cipta 2026 Tim Kajian BOK Kewilayahan. Dilarang menyalin atau menyebarluaskan tanpa izin.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Serif:wght@600&display=swap">
@@ -499,6 +500,10 @@ main.penuh{overflow:hidden}
 .tentang h2{font-family:var(--f-judul);font-weight:600;font-size:22px;margin:0}
 .tentang p{max-width:70ch;margin:0}
 .pembuka-t{columns:2 340px;column-gap:32px}
+.hak{font-size:11.5px;color:var(--tinta-2);max-width:none!important;border-top:1px solid var(--garis-2);padding-top:8px;margin:0}
+.ketentuan{border:1px solid var(--garis);border-left:3px solid var(--kuning);border-radius:3px;padding:14px 18px;display:grid;gap:8px}
+.ketentuan ol{margin:0;padding-left:20px;display:grid;gap:7px;font-size:12.5px;line-height:1.6}
+.ketentuan b{font-weight:700}
 .pembuka-t p{max-width:none;margin:0 0 10px}
 .gulir{overflow-x:auto}
 .tentang table{border-collapse:collapse;width:100%;min-width:760px;font-size:12px}
@@ -785,7 +790,8 @@ details.perjalanan>summary small{font-size:11.5px;color:var(--tinta-2)}
 
       <div class="catatan-b">
         <p>Ini rancangan untuk dibahas tim. Indikator dan tampilannya masih bisa berubah. Pembagian kuadran memakai median sebagai batas sementara.</p>
-        <p>Tim Kajian BOK Kewilayahan, <span class="tgl"></span>. Lambang daerah dan logo lembaga dari Wikimedia Commons.</p>
+        <p>Tim Kajian BOK Kewilayahan, <span class="tgl"></span>. Lambang daerah, logo lembaga, dan foto wilayah dari Wikimedia Commons.</p>
+        <p class="hak">Hak cipta © 2026 Tim Kajian BOK Kewilayahan. Tampilan, kode, dan olahan data di dashboard ini tidak boleh disalin, disebarluaskan, atau dipakai ulang tanpa izin tertulis tim. <a href="#tentang" data-ke="ketentuan">Ketentuan penggunaan</a></p>
       </div>
     </div>
   </section>
@@ -901,6 +907,7 @@ details.perjalanan>summary small{font-size:11.5px;color:var(--tinta-2)}
     <h3>Yang belum pasti</h3>
     <ul class="catatan-list" id="reg-catatan"></ul>
     <p class="petunjuk">Disusun dari draf telaah regulasi tim untuk Laporan Antara (21 sampai 26 Oktober 2026) beserta log verifikasinya.</p>
+    <p class="hak">Hak cipta © 2026 Tim Kajian BOK Kewilayahan. Tampilan, kode, dan olahan data di dashboard ini tidak boleh disalin, disebarluaskan, atau dipakai ulang tanpa izin tertulis tim. <a href="#tentang" data-ke="ketentuan">Ketentuan penggunaan</a></p>
   </section>
 
   <!-- TENTANG -->
@@ -933,7 +940,20 @@ details.perjalanan>summary small{font-size:11.5px;color:var(--tinta-2)}
         <div class="garis-waktu" id="rp-agenda"></div>
       </div>
     </details>
+    <section class="ketentuan" id="ketentuan" aria-labelledby="judul-ketentuan">
+      <h2 id="judul-ketentuan" style="font-size:18px;margin:0">Ketentuan penggunaan</h2>
+      <ol>
+        <li><b>Rancangan kerja, bukan publikasi.</b> Dashboard ini rancangan Tim Kajian BOK Kewilayahan untuk dibahas bersama Kementerian PPN/Bappenas dan UNICEF Indonesia. Angka, golongan daerah, dan telaah regulasinya masih sementara dan belum menjadi sikap resmi lembaga mana pun.</li>
+        <li><b>Tautan hanya untuk penerima.</b> Mohon tautan dashboard ini tidak diteruskan, diunggah ulang, atau dibagikan di media sosial dan grup terbuka tanpa persetujuan tim. Halaman ini sengaja tidak didaftarkan ke mesin pencari.</li>
+        <li><b>Tampilan dan kode.</b> Rancangan tampilan, susunan halaman, cara penyajian grafik dan peta, teks penjelasan, serta kode dashboard adalah karya tim dan dilindungi hak cipta. Menyalin atau meniru sebagian besar tampilan dan kode untuk dashboard lain tidak diizinkan tanpa izin tertulis.</li>
+        <li><b>Olahan data.</b> Indikator hasil olahan tim (misalnya kapasitas fiskal KFD, porsi BOK, golongan kuadran, dan pemadanan desa) tidak boleh diambil, diunduh massal, atau dipakai dalam publikasi tanpa izin dan tanpa menyebut sumber. Untuk keperluan kajian, hubungi tim agar mendapat versi data terbaru beserta catatannya.</li>
+        <li><b>Data sumber.</b> Data asli tetap milik instansi penerbitnya (Kemenkes, Kemenkeu, BPS, Kemendagri, Kemendes, BIG, dan lainnya, lihat rincian per indikator di atas) dan tunduk pada ketentuan masing-masing.</li>
+        <li><b>Gambar.</b> Foto wilayah, lambang daerah, dan logo lembaga berasal dari Wikimedia Commons dengan lisensi masing-masing (domain publik, CC BY, atau CC BY-SA). Kredit foto tercantum di setiap profil kab/kota.</li>
+        <li><b>Mengutip.</b> Kutipan singkat untuk keperluan internal kajian boleh dilakukan dengan menyebut sumber sesuai contoh di Beranda.</li>
+      </ol>
+    </section>
     <p>Rancangan, <span class="tgl"></span>. Indikator, sumber, dan tampilan masih bisa berubah sesudah masukan tim.</p>
+    <p class="hak">Hak cipta © 2026 Tim Kajian BOK Kewilayahan. Tampilan, kode, dan olahan data di dashboard ini tidak boleh disalin, disebarluaskan, atau dipakai ulang tanpa izin tertulis tim.</p>
   </section>
 </main>
 </div>
@@ -3491,6 +3511,8 @@ function bukaProfil(k){
 function tutupProfil(){ $('profil').hidden = true; document.body.style.overflow = ''; }
 document.addEventListener('click', e => { const b = e.target.closest('[data-profil]'); if(b){ bukaProfil(b.dataset.profil); return; } if(e.target.closest('.tutup-p')) tutupProfil(); });
 document.addEventListener('keydown', e => { if(e.key==='Escape' && !$('profil').hidden) tutupProfil(); });
+document.addEventListener('click', e => { const a = e.target.closest('a[data-ke]'); if(!a) return; e.preventDefault(); const go = () => { const t = $(a.dataset.ke); if(t) t.scrollIntoView({block:'start'}); };
+  if(location.hash !== '#tentang'){ location.hash = 'tentang'; setTimeout(go, 350); } else go(); });
 
 /* ---------------- tentang ---------------- */
 const ASAL = JSON.parse($('data-asal').textContent || 'null') || {indikator:{}, umum:{prinsip:[]}};
